@@ -1,7 +1,7 @@
 import { openAIProvider } from '../providers/openai.provider'
 import { ChatCompletionRequestMessage } from 'openai'
 
-export class CLubMate {
+export class ClubMate {
   private readonly openAI: openAIProvider
   constructor(openaiAPIKey?: string) {
     this.openAI = new openAIProvider(openaiAPIKey)
@@ -12,7 +12,7 @@ export class CLubMate {
 
     if (data)
       message = `${message}
-    Data: ${JSON.stringify(data)}.`
+      Data: ${JSON.stringify(data)}.`
 
     message = `${message}
     ${command}.

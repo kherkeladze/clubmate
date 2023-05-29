@@ -1,0 +1,1 @@
+export { ClubMate } from './services'

@@ -2,12 +2,12 @@
   "name": "clubmate",
   "version": "1.0.0",
   "description": "ClubMate is a library that incorporates generative artificial intelligence capabilities into javascript and enabling conversational interactions.",
-  "main": "index.js",
+  "files": ["dist/lib/**/*"],
   "scripts": {
     "build": "tsc",
     "lint": "eslint src",
     "start:sandbox": "npm run build && node dist/sandbox.js",
-    "test": "jest"
+    "test": "jest src/tests"
   },
   "repository": {
     "type": "git",

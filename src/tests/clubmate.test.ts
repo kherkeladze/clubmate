@@ -1,6 +1,6 @@
 import { describe, expect, test } from '@jest/globals'
-import { CLubMate } from '../services'
-const clubMate = new CLubMate(process.env.OPENAI_API_KEY)
+import { ClubMate } from '../lib'
+const clubMate = new ClubMate(process.env.OPENAI_API_KEY)
 
 type Book = {
   name: string
