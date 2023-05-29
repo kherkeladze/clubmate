@@ -1,7 +1,8 @@
 {
     "env": {
         "browser": true,
-        "es2021": true
+        "es2021": true,
+        "node": true
     },
     "extends": [
         "eslint:recommended",
@@ -41,6 +42,9 @@
         "no-multiple-empty-lines": [
             "error",
             { "max": 1 }
+        ],
+        "no-multi-spaces": [
+            "error"
         ]
     }
 }
