@@ -22,7 +22,7 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       - run: |
-          echo Key is:$OPENAI_API_KEY
+          echo Key is ${{ secrets.OPENAI_API_KEY }}
       - run: npm ci
       - run: npm run lint
       - run: npm run build --if-present
