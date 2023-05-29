@@ -21,6 +21,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      - run: export OPENAI_API_KEY=$OPENAI_API_KEY          
       - run: npm ci
       - run: npm run lint
       - run: npm run build --if-present
