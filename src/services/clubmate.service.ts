@@ -19,7 +19,6 @@ export class ClubMate {
       content: message
     }
     const response = await this.openAI.sendCompletionMessage(completionMessage)
-    console.log(response)
     const output = response?.message?.content
 
     if (!output) {
