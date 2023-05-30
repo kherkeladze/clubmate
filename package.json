@@ -1,7 +1,7 @@
 {
   "name": "clubmate",
-  "version": "1.0.1",
-  "description": "ClubMate is a library that incorporates generative artificial intelligence capabilities into javascript and enabling conversational interactions.",
+  "version": "1.0.2",
+  "description": "ClubMate is a JavaScript library that enhances JavaScript projects with generative artificial intelligence capabilities.",
   "author": "Aka Kherkeladze",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
