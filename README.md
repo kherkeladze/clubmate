@@ -7,4 +7,4 @@
 
 ClubMate is a JavaScript library that enhances JavaScript projects with generative artificial intelligence capabilities.
 
-<img src="logo.png" alt="clubmate" height="400px" width="397px">
+<img src="logo.png" alt="clubmate" height="200px" >
