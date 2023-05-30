@@ -32,13 +32,12 @@ export class openAIProvider {
     try {
       const completion = await this.client.createChatCompletion({
         model: 'gpt-3.5-turbo',
-        max_tokens: 4000,
+        max_tokens: 2048,
         temperature: 0,
         top_p: 1,
         frequency_penalty: 0,
         presence_penalty: 0,
-        messages: [message],
-        user: 'clubmate'
+        messages: [message]
       })
       return completion.data.choices.pop()
     } catch (e) {

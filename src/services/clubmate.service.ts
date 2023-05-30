@@ -8,41 +8,35 @@ export class ClubMate {
   }
 
   async produce(command: string, data?: object) {
-    let message = 'Programming language: Node.JS'
+    let message = command
+    if (data) message += `\nInput: ${JSON.stringify(data)}`
 
-    if (data)
-      message = `${message}
-      Data: ${JSON.stringify(data)}.`
-
-    message = `${message}
-    ${command}.
-    Send only stringified JS output and valid JS datatype, no explanation, no code.
-    If it's not possible to return valid JS datatype, return only following string = "OPENAI_ERROR".`
+    message += `
+    \nOutput: Data as only valid javascript datatype (without type).`
 
     const completionMessage: ChatCompletionRequestMessage = {
-      role: 'user',
+      role: 'system',
       content: message
     }
     const response = await this.openAI.sendCompletionMessage(completionMessage)
+    console.log(response)
     const output = response?.message?.content
 
-    if (!output || output.includes('OPENAI_ERROR')) {
+    if (!output) {
       throw new Error('OpenAI error, check your command and data')
     }
     return this.processOutput(output)
   }
 
   private processOutput(output: string) {
-    // For objects
+    // For Objects and Arrays
     try {
-      return eval(JSON.parse(output))
+      return JSON.parse(output.replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:/g, '"$2": '))
     } catch (e) { /* empty */ }
 
-    // For other DataTypes
-    try {
-      return eval(output)
-    } catch (e) {
-      return output
-    }
+    // For Primitive Types
+    if (output === 'true' || output === 'false') return Boolean(output)
+    if (!isNaN(Number(output)) && !isNaN(parseFloat(output))) return Number(output)
+    return output
   }
 }

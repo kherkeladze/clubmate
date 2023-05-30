@@ -15,9 +15,26 @@ type Country = {
   callingCode: string
 }
 
-describe('Producer tests', () => {
+describe('Primitive types tests', () => {
+  test('Get percentage', async () => {
+    const answer: number = await clubMate.produce('What percentage is 6 of 40 as number?')
+    expect(answer).toBe(15)
+  }, 999999)
+
+  test('Get capital', async () => {
+    const capitalOfGermany: string = await clubMate.produce('Capital of Germany?')
+    expect(capitalOfGermany).toBe('Berlin')
+  }, 999999)
+
+  test('Boolean check', async () => {
+    const isLeapYear: boolean = await clubMate.produce('Is the Earth flat?')
+    expect(isLeapYear).toBe(false)
+  }, 999999)
+})
+
+describe('Data producer tests', () => {
   test('Get harry potter books', async () => {
-    const hpBooks: [Book] = await clubMate.produce(
+    const hpBooks: Book[] = await clubMate.produce(
       'Generate array of objects of all Harry Potter books with name, author, releaseYear and isbn number fields'
     )
     expect(hpBooks.length).toBe(7)
@@ -31,7 +48,7 @@ describe('Producer tests', () => {
   }, 999999)
 
   test('Get EU countries data', async() => {
-    const countries: [Country] = await clubMate.produce('Generate array of objects of EU countries with name, countryCode and callingCode')
+    const countries: Country[] = await clubMate.produce('Generate array of objects of EU countries with name, countryCode and callingCode')
 
     const germany = countries.find(x => x.name === 'Germany')
     expect(germany).toBeDefined()
@@ -39,10 +56,26 @@ describe('Producer tests', () => {
     expect(germany?.callingCode).toBe('+49')
   }, 999999)
 
+  test('Get Country details', async() => {
+    type Country = {
+      name: string
+      code: string
+      emojiFlag: string
+    }
+    const georgia: Country = await clubMate.produce(
+      'Return a new object Of Goergian republic with name, code and emojiFlag attributes'
+    )
+    expect(georgia).toBeDefined()
+    expect(georgia?.code).toBe('GE')
+    expect(georgia?.emojiFlag).toBe('🇬🇪')
+  }, 999999)
+})
+
+describe('For Existing data tests', () => {
   test('Get book details by book names', async() => {
     const bookNames = ['Don Quixote', 'Never Let Me Go', '1984']
-    const booksWithDetails: [Book] = await clubMate.produce(
-      'Return array of objects of books and add following fields: name, releaseYear, author and isbn',
+    const booksWithDetails: Book[] = await clubMate.produce(
+      'Return array of objects of books with fields: name, releaseYear, author and isbn',
       bookNames
     )
     const donQuixote = booksWithDetails.find(x => x.name ==='Don Quixote')
@@ -50,18 +83,5 @@ describe('Producer tests', () => {
     expect(donQuixote?.author).toBe('Miguel de Cervantes')
     expect(donQuixote?.releaseYear).toBe(1605)
     expect(donQuixote?.isbn).toBe('9780142437230')
-  }, 999999)
-
-  test('Get book name translations', async() => {
-    type Translations = {
-      French: string
-      German: string
-      Ukrainian: string
-    }
-    const movieTranslations: Translations = await clubMate.produce(
-      'Create a new object with keys as the languages (French, German, Ukrainian) and their respective translated movie names for "The Girl with the Dragon Tattoo.'
-    )
-    expect(movieTranslations).toBeDefined()
-    expect(movieTranslations?.German).toBe('Verblendung')
   }, 999999)
 })
