@@ -9,8 +9,7 @@
     "build": "tsc",
     "lint": "eslint src",
     "start:sandbox": "npm run build && node lib/sandbox.js",
-    "test": "jest src/tests",
-    "prepublish": "npm run build && npm test"
+    "test": "jest src/tests"
   },
   "repository": {
     "type": "git",
