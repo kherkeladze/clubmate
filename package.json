@@ -2,7 +2,9 @@
   "name": "clubmate",
   "version": "1.0.0",
   "description": "ClubMate is a library that incorporates generative artificial intelligence capabilities into javascript and enabling conversational interactions.",
-  "files": ["dist/lib/**/*"],
+  "author": "Aka Kherkeladze",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc",
     "lint": "eslint src",
@@ -13,8 +15,7 @@
     "type": "git",
     "url": "git+https://github.com/kherkeladze/clubmate.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["ai", "openai", "generativeai", "chatgpt"],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/kherkeladze/clubmate/issues"
